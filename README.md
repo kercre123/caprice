@@ -23,7 +23,7 @@
       -  Copy token.jwt from com.anki.victor and change server endpoints
           -  probably only for 0.10
           -  0.10 also needs: `sed -i "s/robot_id/token_id/g" /anki/bin/vic-cloud`
-    -   So maybe like:
+   -   So maybe like:
 ```go
 const (
   CameraEra_DVT2 = 0
