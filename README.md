@@ -25,6 +25,12 @@
           -  0.10 also needs: `sed -i "s/robot_id/token_id/g" /anki/bin/vic-cloud`
     -   So maybe like:
 ```go
+const (
+  CameraEra_DVT2 = 0
+  CameraEra_DVT3 = 1
+  CameraEra_Modern = 2
+)
+
 type PatchConfig struct {
   CameraEra int
   DoCloudPatches bool
