@@ -14,6 +14,7 @@ import (
 	"time"
 
 	"github.com/cheggaaa/pb/v3"
+	"github.com/kercre123/caprice/pkg/shared"
 	"github.com/kercre123/vector-gobot/pkg/vscreen"
 	"github.com/schollz/progressbar/v3"
 )
@@ -40,7 +41,7 @@ func GetFileAsString(file string) string {
 func OSDetect() (isStock bool, version string, id string) {
 	currentFile := fjoin(ConfigPath, "current.json")
 	ankiCurrentFile := "/anki/etc/version"
-	var pers Personality
+	var pers shared.Personality
 	if FExist(fjoin(ConfigPath, "current.json")) {
 		json.Unmarshal(GetFile(currentFile), &pers)
 		return false, pers.Version, pers.ID
@@ -219,7 +220,7 @@ func downloadAndExtract(url, root string) error {
 	return nil
 }
 
-func DealWithBlobs(p Personality) {
+func DealWithBlobs(p shared.Personality) {
 	runCmd("systemctl stop mm-anki-camera mm-qcamera-daemon")
 }
 
