@@ -22,23 +22,6 @@ const (
 	ConfigPath = "/etc/caprice"
 )
 
-const (
-	MMEra_Feb9 = 0
-	MMEra_010  = 1
-	MMERA_100  = 2
-)
-
-type Personality struct {
-	Name         string `json:"name"`
-	Description  string `json:"description"`
-	Version      string `json:"version"`
-	ID           string `json:"id"`
-	MMEra        int    `json:"mmera"`
-	BluetoothEra int    `json:"bluetoothera"`
-	// needs an extra daemon
-	CustomWireProgram bool `json:"customwireprogram"`
-}
-
 func FExist(file string) bool {
 	_, err := os.ReadFile(file)
 	return err == nil
@@ -234,6 +217,10 @@ func downloadAndExtract(url, root string) error {
 
 	bar.Finish()
 	return nil
+}
+
+func DealWithBlobs(p Personality) {
+	runCmd("systemctl stop mm-anki-camera mm-qcamera-daemon")
 }
 
 func RemoveOldAnki() {
